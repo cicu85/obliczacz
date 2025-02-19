@@ -117,7 +117,7 @@ class Main(QMainWindow):
                 hLayout.addWidget(button)
                 i += 1
             if i == 16:
-                button = self.CreateButton3(" ")
+                button = self.CreateButton3("")
                 hLayout.addWidget(button)
                 i += 1
             layout.addWidget(rowWidget)
@@ -135,7 +135,7 @@ class Main(QMainWindow):
         button.setFixedSize(130,90)
         button.clicked.connect(lambda b: self.onButtonClick2(text))
         return button
-
+    
     def CreateButton3(self, text) -> QPushButton:
         button = QPushButton()
         button.setText(text)
@@ -143,6 +143,7 @@ class Main(QMainWindow):
         return button
     
     def onButtonClick(self, button: QPushButton):
+        
         if len(self.pamiec) == 0:
             if button == '.':
                 self.pamiec.append("0.")
@@ -155,8 +156,11 @@ class Main(QMainWindow):
                 self.pamiec[0] = button
                 self.wyswietlacz.setText(button)
             else:
+                if "." in self.pamiec[0] and button == ".":
+                    return
                 self.pamiec[0] += button
                 self.wyswietlacz.setText(self.pamiec[0])
+                
         if len(self.pamiec) == 2:
             if button == '.':
                 self.pamiec.append("0.")
@@ -169,6 +173,8 @@ class Main(QMainWindow):
                 self.pamiec[2] = button
                 self.wyswietlacz.setText(button)
             else:
+                if "." in self.pamiec[2] and button == ".":
+                    return
                 self.pamiec[2] += button
                 self.wyswietlacz.setText(self.pamiec[2])
         print(self.pamiec)
