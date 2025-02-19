@@ -117,7 +117,7 @@ class Main(QMainWindow):
                 hLayout.addWidget(button)
                 i += 1
             if i == 16:
-                button = self.CreateButton(" ")
+                button = self.CreateButton3(" ")
                 hLayout.addWidget(button)
                 i += 1
             layout.addWidget(rowWidget)
@@ -134,6 +134,12 @@ class Main(QMainWindow):
         button.setText(text)
         button.setFixedSize(130,90)
         button.clicked.connect(lambda b: self.onButtonClick2(text))
+        return button
+
+    def CreateButton3(self, text) -> QPushButton:
+        button = QPushButton()
+        button.setText(text)
+        button.setFixedSize(130,90)
         return button
     
     def onButtonClick(self, button: QPushButton):
